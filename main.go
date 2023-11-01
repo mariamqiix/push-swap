@@ -27,57 +27,29 @@ func main() {
 		}
 		a = append(a, num)
 	}
-	length := len(a)
 
-	fmt.Println(a, b)
 
-	for i := 0; !(SortInteger(a) && len(a) == length) && i < 20; i++ {
+	fmt.Println("first", a, b)
 
-		if len(a) > 1 && a[1] < a[0] {
-			a = s(a) //sa swap first 2 elements of stack a
-			ans = append(ans, "sa")
 
-		} else if len(b) > 1 && b[1] < b[0] {
-			b = s(b) //sb swap first 2 elements of stack b
-			ans = append(ans, "sb")
+	sortStack()
 
-		} else if (len(b) > 1 && len(b) > 1 && a[0] > b[0]) || i < 2 {
-			p("b")
+	for len(b) != 0 {
+		p("a")
 
-		} else if (len(a) > 1 && len(b) > 1 && b[0] > a[0]) || i < 2 {
-			p("a")
-
-		} else if len(a) > 1 && a[0] > a[len(a)-1] {
-			a = rotate(a)
-			ans = append(ans, "ra")
-
-		} else if len(b) > 1 && b[0] > b[len(b)-1] {
-			b = rotate(b)
-			ans = append(ans, "rb")
-
-		} else if len(a) > 1 && a[0] > a[len(a)-1] {
-			a = reverse(a)
-			ans = append(ans, "rra")
-
-		} else if len(b) > 1 && b[0] > b[len(b)-1] {
-			b = reverse(b)
-			ans = append(ans, "rrb")
-
-		} 
-
-		fmt.Println(a, b)
 	}
 
+	fmt.Println("Done")
+	fmt.Println(a, b)
 	fmt.Println(ans)
 }
-
 
 // else if len(b) > 1 && len(a) > 1 {
 // 	a = rotate(a)
 // 	b = rotate(b)
 // 	ans = append(ans, "rr")
 
-// } 
+// }
 
 // else if len(b) > 1 && len(a) > 1 {
 // 	a = reverse(a)
@@ -147,4 +119,76 @@ func reverse(arr1 []int) []int {
 	// Print the updated arr1
 	fmt.Println(arr1)
 	return arr1
+}
+
+func sortStack() {
+
+	if len(a) <= 1 || SortInteger(a) {
+		return
+	} else if len(a) == 2 {
+		s(a)
+		ans = append(ans, "sa")
+		return
+	}
+
+	length := len(a)
+
+	for i := 0; !(SortInteger(a) && len(a) == length) && i < 20; i++ {
+
+		fmt.Println(a, b)
+
+
+
+		// if !SortInteger(b) || len(b) < 2 {
+		// 	p("b")
+		// 	continue
+
+		// }
+
+		if a[1] < a[0] {
+			a = s(a) //sa swap first 2 elements of stack a
+			ans = append(ans, "sa")
+			for len(b) <= len(a)/2 {
+				p("b")
+			}
+			continue
+		}
+
+
+
+		if len(b) > 1 && b[1] < b[0] {
+			b = s(b) //sb swap first 2 elements of stack b
+			ans = append(ans, "sb")
+			continue
+
+		}
+
+		if a[0] > a[len(a)-1] {
+			a = rotate(a)
+			ans = append(ans, "ra")
+			continue
+		}
+
+		if len(b) > 1 && b[0] > b[len(b)-1] {
+			b = rotate(b)
+			ans = append(ans, "rb")
+			continue
+		}
+
+		if a[0] > a[len(a)-1] {
+			a = reverse(a)
+			ans = append(ans, "rra")
+			continue
+		}
+
+		if len(b) > 1 && b[0] > b[len(b)-1] {
+			b = reverse(b)
+			ans = append(ans, "rrb")
+			continue
+		}
+
+
+		fmt.Println(a, b)
+	}
+
 }
