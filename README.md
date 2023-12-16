@@ -32,6 +32,7 @@ _**To Run this project**_
 2.  `make Checek` after cloning and navigating for ./checker or `go run . "numbers` after `cd checker`
 2.  `make Both` after cloning and navigating for buliding both of them
 3.  `./"nameOfTheBot" "numbers"` (if u used the first method).
+4.  use `| wc -l` after the output to show the count of the moves.
 
 **bulid:**
 ```
