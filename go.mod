@@ -1,4 +1,4 @@
-module ascii
+module PushSwap
 
 go 1.20
 
