@@ -40,24 +40,24 @@ echo "Try to run ./push-swap '<5 random numbers>' with 5 different random number
 bash random.sh 5 0
 Continue
 
-echo "Try to run ./Checker and input nothing."
-go run ./checker/.
+echo "Try to run ./checker and input nothing."
+go run ./check/.
 Continue
 
-echo "Try to run ./Checker '0 one 2 3' "
-go run ./checker/. "0 one 2 3"
+echo "Try to run ./checker '0 one 2 3' "
+go run ./check/. "0 one 2 3"
 Continue
 
-echo "Try to run echo -e 'sa\npb\nrrr\n' | ./Checker '0 9 1 8 2 7 3 6 4 5'"
-echo -e "sa\npb\nrrr\n"  | go run ./checker/. "0 9 1 8 2 7 3 6 4 5"
+echo "Try to run echo -e 'sa\npb\nrrr\n' | ./checker '0 9 1 8 2 7 3 6 4 5'"
+echo -e "sa\npb\nrrr\n"  | go run ./check/. "0 9 1 8 2 7 3 6 4 5"
 Continue
 
-echo "Try to run echo -e 'pb\nra\npb\nra\nsa\nra\npa\npa\n' | ./Checker '0 9 1 8 2'"
-echo -e "pb\nra\npb\nra\nsa\nra\npa\npa\n" | go run ./checker/. "0 9 1 8 2"
+echo "Try to run echo -e 'pb\nra\npb\nra\nsa\nra\npa\npa\n' | ./checker '0 9 1 8 2'"
+echo -e "pb\nra\npb\nra\nsa\nra\npa\npa\n" | go run ./check/. "0 9 1 8 2"
 Continue
 
-echo "Try to run ARG=('4 67 3 87 23'); ./push-swap ARG | ./Checker ARG"
-ARG=('4 67 3 87 23'); go run ./pushSwap/. "$ARG" | go run ./checker/. "$ARG"
+echo "Try to run ARG=('4 67 3 87 23'); ./push-swap ARG | ./checker ARG"
+ARG=('4 67 3 87 23'); go run ./pushSwap/. "$ARG" | go run ./check/. "$ARG"
 Continue
 
 echo "Try to run ARG=('<100 random numbers>'); ./push-swap ARG with 100 random different numbers instead of the tag."
@@ -65,6 +65,8 @@ Continue
 bash random.sh 100 0
 Continue
 
-echo "Try to run ARG=('<100 random numbers>'); ./push-swap ARG | ./Checker ARG with 100 random different numbers instead of the tag."
+echo "Try to run ARG=('<100 random numbers>'); ./push-swap ARG | ./checker ARG with 100 random different numbers instead of the tag."
 bash random.sh 100 1
 Continue
+
+# git add . && git commit -m "4" && git push
